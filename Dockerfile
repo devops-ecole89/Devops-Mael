@@ -17,7 +17,9 @@ RUN pip install --no-cache-dir flask
 EXPOSE 5000
 
 # Copier les fichiers de l'application dans le conteneur
-COPY flaskApp/ .
+RUN git clone https://github.com/devops-ecole89/Devops-Mael.git
+RUN mv Devops-Mael/* /home/ubuntu
 
-CMD ["python3", "myproject.py"]
+
+CMD ["python3", "flaskApp/myproject.py"]
 
