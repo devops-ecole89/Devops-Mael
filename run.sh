@@ -12,5 +12,5 @@ if [ $TEST_RESULT -eq 0 ]; then
     #git push origin preprod
 else
     echo "Tests échoués, voir test_output.log pour plus de détails"
-    cp test_output.log /path/to/local/logs/
+
 fi
