@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exécuter les tests
-pytest flask_test.py
+pytest
 TEST_RESULT=$?
 echo $TEST_RESULT
 

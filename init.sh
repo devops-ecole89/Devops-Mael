@@ -3,7 +3,7 @@ sudo docker container rm -f container_flask
 sudo docker image rm -f image_flask
 
 #construire l'image
-sudo docker build -t image_flask .
+sudo docker build --no-cache -t image_flask .
 
 #lancer le container
 sudo docker run -d -p 5000:5000 --name container_flask image_flask

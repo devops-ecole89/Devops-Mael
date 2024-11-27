@@ -26,7 +26,7 @@ RUN git fetch origin dev && git checkout dev
 
 
 #Run sh script test and run
-CMD ["sh", "run.sh"]
+CMD ["sh", "flaskApp/run.sh"]
 
 
 #CMD ["python3", "flaskApp/myproject.py"]
