@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exécuter les tests
-pytest
+pytest flask_test.py
 TEST_RESULT=$?
 
 # Vérifier si les tests ont réussi
