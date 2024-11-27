@@ -3,6 +3,7 @@
 # Exécuter les tests
 pytest flask_test.py
 TEST_RESULT=$?
+echo $TEST_RESULT
 
 # Vérifier si les tests ont réussi
 if [ $TEST_RESULT -eq 0 ]; then

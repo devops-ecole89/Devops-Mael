@@ -13,3 +13,4 @@ sudo docker start container_flask
 
 #logs de l'application
 sudo docker logs container_flask
+echo $?

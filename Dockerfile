@@ -24,6 +24,7 @@ WORKDIR /home/ubuntu/Devops-Mael
 # Ensure the branch exists before checking out
 RUN git fetch origin dev && git checkout dev
 
+
 #Run sh script test and run
 CMD ["sh", "run.sh"]
 
