@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exécuter les tests
-pytest test.py > test_output.log 2>&1
+pytest
 TEST_RESULT=$?
 
 # Vérifier si les tests ont réussi
@@ -11,6 +11,5 @@ if [ $TEST_RESULT -eq 0 ]; then
     #git merge dev
     #git push origin preprod
 else
-    echo "Tests échoués, voir test_output.log pour plus de détails"
-
+    echo "Tests échoués, voir la sortie de pytest pour plus de détails"
 fi
