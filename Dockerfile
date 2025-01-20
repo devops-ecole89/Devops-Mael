@@ -26,6 +26,6 @@ RUN git fetch origin staging && git checkout staging
 
 ENV PYTHONPATH="/home/ubuntu/Devops-Mael"
 
-# Run the application
 CMD ["python", "myproject.py"]
+
 

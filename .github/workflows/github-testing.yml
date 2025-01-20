@@ -1,0 +1,32 @@
+name: test application on push
+run-name: ${{ github.actor }} is testing Application to merge on staging 🚀
+on: [push]
+jobs:
+  Testing :
+    runs-on: ubuntu-latest
+    steps:
+      - name: build docker image
+        run: docker build -t testapp .
+      - name: run docker container
+        run: docker run -d -p 5000:5000 testapp
+      - name: run tests
+        id: run_tests
+        run: docker exec $(docker ps -lq) python -m pytest
+      - name : test sucess
+        if: steps.run_tests.outcome == 'success'
+        run: echo "tests passed"
+      #if tests pass, push the image to docker hub
+      - name: log in to docker hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - name: tag image to docker hub
+        run: docker tag testapp ${{ secrets.DOCKER_USERNAME }}/testapp
+      - name: push image to docker hub
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/testapp
+      #if tests pass, merge to staging
+      - name : merge to staging
+        run: |
+          git checkout staging
+          git merge dev
+          git push origin staging
+
+

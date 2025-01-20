@@ -5,3 +5,5 @@ services:
     build: ../../IdeaProjects/CI CD
     ports:
       - "5000:5000"
+    command:
+      - python myproject.py
