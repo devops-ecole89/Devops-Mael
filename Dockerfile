@@ -8,18 +8,24 @@ WORKDIR /home/ubuntu
 RUN apt update
 
 # Install python3
-RUN apt install -y python3-full python3-pip python3-dev  build-essential libssl-dev libffi-dev python3-setuptools python3-venv
+RUN apt install -y python3-full python3-pip python3-dev  build-essential libssl-dev libffi-dev python3-setuptools python3-venv git
 
 # Install Flask
-RUN pip install --no-cache-dir flask
+RUN pip install --no-cache-dir flask pytest
 
 # Open port 22 to allow SSH into the container
 EXPOSE 5000
 
 # Copier les fichiers de l'application dans le conteneur
 RUN git clone https://github.com/devops-ecole89/Devops-Mael.git
-RUN mv Devops-Mael/* /home/ubuntu
 
+WORKDIR /home/ubuntu/Devops-Mael
 
-CMD ["python3", "flaskApp/myproject.py"]
+# Ensure the branch exists before checking out
+RUN git fetch origin staging && git checkout staging
+
+ENV PYTHONPATH="/home/ubuntu/Devops-Mael"
+
+CMD ["python", "myproject.py"]
+
 
